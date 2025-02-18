@@ -14,7 +14,7 @@ function   getData() {
     
 
         
-    if (input.value) {
+    if (input.value ) {
         let p1 = document.createElement("p")
         let p2 = document.createElement("p");
         p2.className = "para";
@@ -31,6 +31,8 @@ function   getData() {
         p2.style.textAlign = "right";
         cntr.append(p1);
         cntr.append(p2);
+        // p1.innerText = "";
+        // p2.innerText = "";
     }
     else {
         let p1 = document.createElement("p")
@@ -39,9 +41,12 @@ function   getData() {
         cntr.append(p1);
     }
         
-    }
+}
+let event1 = "click";
 
-btn.addEventListener("click",getData );
+
+
+btn.addEventListener(event1,getData );
 
 
 
