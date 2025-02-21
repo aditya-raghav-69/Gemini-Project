@@ -9,22 +9,41 @@ let btn = document.querySelector("#button");
 
 
 
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-function   getData() {
+const genAI = new GoogleGenerativeAI("AIzaSyCF8ngsBWcr3kFABIKNnlg6ESVKdQBUls0");
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+   
+
+
+
+
+
+
+
+
+// failed to call api from the google 
+
+ async function   getData() {
     
 
         
-    if (input.value ) {
+     if (input.value) {
+        
+         
+        const result = await model.generateContent(input.value);
+        console.log(result.response.text());
+        
         let p1 = document.createElement("p")
         let p2 = document.createElement("p");
         p2.className = "para";
 
-        console.log("hello world");
+        // console.log("hello world");
         
         p1.innerText = input.value;
-        p1.className = "para"
+        p1.className = "para";
     
-        p2.innerText = " upun jaunga right side because boss is always right";
+        p2.innerText = result.response.text();
         p1.style.textAlign = "left";
         p2.style.color = "white";
         
@@ -51,20 +70,4 @@ btn.addEventListener(event1,getData );
 
 
 
-
-// const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-// const genAI = new GoogleGenerativeAI("");
-// const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
-// const prompt = "Explain how AI works";
-
-
-// async function myAI(p){
-//     const result = await model.generateContent(p);
-// console.log(result.response.text());
-// }
-
-
-// myAI(prompt);
 
